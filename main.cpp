@@ -31,7 +31,9 @@ extern "C" void *wine_dll_load( const char *filename, char *error, int errorsize
 	void* result = ((decltype(&wine_dll_load))dlsym(RTLD_NEXT, "wine_dll_load"))(filename, error, errorsize, file_exists);
 
 	//check for dlls
-	if (string("xinput1_3.dll") == filename)
+	if (string("xinput1_3.dll") == filename ||
+	    string("xinput1_4.dll") == filename ||
+	    string("xinput9_1_0.dll") == filename)
 	{
 		long addr = 0;
 		pair<string, void*> list[] =
