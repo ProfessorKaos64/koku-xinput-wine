@@ -1,0 +1,2 @@
+#!/bin/sh
+echo "usr/lib/$(dpkg-architecture -qDEB_HOST_MULTIARCH)/koku-xinput-wine.so usr/lib/libretro/koku-xinput-wine.so"
