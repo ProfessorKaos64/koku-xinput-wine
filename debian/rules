@@ -9,11 +9,8 @@ export DEB_HOST_GNU_CPU    ?= $(shell dpkg-architecture -qDEB_HOST_GNU_CPU)
 	dh $@
 
 override_dh_install:
-	# find and relocate the library to the main directory
-	# Hacky, should find a better way once Cmake documentaiton is consulted more
-	find . -name "koku-xinput-wine.so" -exec cp {} . \;
 	# install library 
-	dh_install "koku-xinput-wine.so" "/usr/lib/${DEB_HOST_MULTIARCH}"
+	dh_install "obj-${DEB_HOST_MULTIARCH}/koku-xinput-wine.so" "/usr/lib/${DEB_HOST_MULTIARCH}"
 
 override_dh_link:
 	dh_link "/usr/lib/${DEB_HOST_MULTIARCH}/koku-xinput-wine.so" "/usr/lib/koku-xinput-wine.so"
