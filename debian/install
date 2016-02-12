@@ -1,0 +1,3 @@
+#!/bin/sh
+LIBRARY=$(find . -name koku-xinput-wine.so)
+cp ${LIBRARY}" "/usr/lib/$(dpkg-architecture -qDEB_HOST_MULTIARCH)/"
