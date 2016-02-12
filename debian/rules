@@ -1,5 +1,10 @@
 #!/usr/bin/make -f
 
+export DEB_HOST_MULTIARCH  ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+export DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+export DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+export DEB_HOST_GNU_CPU    ?= $(shell dpkg-architecture -qDEB_HOST_GNU_CPU)
+
 %:
 	dh $@
 
@@ -8,4 +13,4 @@ override_dh_install:
 	# Hacky, should find a better way once Cmake documentaiton is consulted more
 	find . -name "koku-xinput-wine.so" -exec cp {} . \;
 	# install library 
-	dh_install "koku-xinput-wine.so" "/usr/lib/$(dpkg-architecture -qDEB_HOST_MULTIARCH)/"
+	dh_install "koku-xinput-wine.so" "/usr/lib/${DEB_HOST_MULTIARCH}"
