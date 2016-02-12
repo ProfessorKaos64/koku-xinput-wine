@@ -2,3 +2,10 @@
 
 %:
 	dh $@
+
+override_dh_install:
+	# find and relocate the library to the main directory
+	# Hacky, should find a better way once Cmake documentaiton is consulted more
+	find . -name "koku-xinput-wine.so" -exec cp {} . \;
+	# install library 
+	dh_install "koku-xinput-wine.so" "/usr/lib/$(dpkg-architecture -qDEB_HOST_MULTIARCH)/"
