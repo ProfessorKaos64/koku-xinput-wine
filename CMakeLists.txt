@@ -8,7 +8,7 @@ ADD_LIBRARY(koku-xinput-wine SHARED main.cpp config.cpp xinput.cpp device.cpp)
 
 # Find SDL:
 find_package(SDL REQUIRED)
-target_include_directories(${SDL_INCLUDE_DIRS})
+target_include_directories(koku-xinput-wine ${SDL_INCLUDE_DIRS})
 
 # Link SDL
 target_link_libraries(koku-xinput-wine ${SDL_LIBRARY})
