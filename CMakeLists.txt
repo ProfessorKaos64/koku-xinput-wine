@@ -15,7 +15,7 @@ ADD_LIBRARY(koku-xinput-wine SHARED main.cpp config.cpp xinput.cpp device.cpp)
 # SDL_LIBRARIES - The libSDL libraries
 
 if(PKG_CONFIG_FOUND)
-  pkg_check_modules (SDL)
+  PKG_CHECK_MODULES([SDL], [sdl >= 1.2])
 else()
   find_package(SDL)
   list(APPEND SDL_INCLUDE_DIRS ${SDL_INCLUDE_DIR})
