@@ -32,4 +32,4 @@ set(CMAKE_CXX_FLAGS "-std=c++0x -m32")
 #target_link_libraries(koku-xinput-wine SDL2)
 #set(CMAKE_CXX_FLAGS "-std=c++0x -m32 -DUSE_SDL2")
 
-set_target_properties(koku-xinput-wine PROPERTIES PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/koku-xinput-wine.so")
+set_target_properties(koku-xinput-wine PROPERTIES PREFIX "${CMAKE_CURRENT_SOURCE_DIR}")
