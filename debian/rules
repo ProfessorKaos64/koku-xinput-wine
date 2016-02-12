@@ -14,3 +14,6 @@ override_dh_install:
 	find . -name "koku-xinput-wine.so" -exec cp {} . \;
 	# install library 
 	dh_install "koku-xinput-wine.so" "/usr/lib/${DEB_HOST_MULTIARCH}"
+
+override_dh_link:
+	dh_link "/usr/lib/${DEB_HOST_MULTIARCH}/koku-xinput-wine.so" "/usr/lib/koku-xinput-wine.so"
