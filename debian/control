@@ -6,7 +6,8 @@ Maintainer: SteamOS-Tools Signing Key <mdeguzis@gmail.com>
 Build-Depends:	debhelper (>= 9),
  libsdl1.2-dev,
  cmake,
- dpatch
+ dpatch,
+ libstdc++-4.9-dev
 Standards-Version: 3.9.5
 Homepage: https://github.com/ProfessorKaos64/koku-xinput-wine
 
