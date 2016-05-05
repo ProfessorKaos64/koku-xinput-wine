@@ -8,9 +8,7 @@ export DEB_HOST_GNU_CPU    ?= $(shell dpkg-architecture -qDEB_HOST_GNU_CPU)
 %:
 	dh $@
 
-override_dh_install:
-	# install library 
-	dh_install "obj-${DEB_HOST_MULTIARCH}/koku-xinput-wine.so" "/usr/lib/${DEB_HOST_MULTIARCH}"
-
-override_dh_link:
-	dh_link "/usr/lib/${DEB_HOST_MULTIARCH}/koku-xinput-wine.so" "/usr/lib/koku-xinput-wine.so"
+override_dh_configure:
+	dh_configure
+	# Replace var placeholders with multi-arch equiv. and so ver.
+	find . -name *.install -print0 | xargs -0 sed -i "s|@DEB_HOST_MULTIARCH@|$(DEB_HOST_MULTIARCH)|g"
